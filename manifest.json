@@ -1,1 +1,16 @@
-
+{
+  "name": "Futbol Live",
+  "short_name": "Futbol Live",
+  "start_url": "/futbol-live/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "description": "Canlı futbol maçları ve futbol bilgileri",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
