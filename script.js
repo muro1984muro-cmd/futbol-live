@@ -180,3 +180,18 @@ bildirimGonder(
 );
 
 },5000);
+navigator.serviceWorker.ready.then(function(registration){
+
+setTimeout(function(){
+
+registration.showNotification(
+"⚽ Futbol Live",
+{
+body:"Test bildirimi çalışıyor!",
+icon:"logo.png"
+}
+);
+
+},5000);
+
+});
