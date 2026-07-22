@@ -5,43 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Futbol Live - Canlı Maç Skorları ve Süper Lig</title>
+<title>Futbol Live - Canlı Maç Skorları</title>
 
-<meta name="description" content="Futbol Live ile Süper Lig canlı maç skorları, canlı sonuçlar, fikstür ve futbol haberlerini takip edin.">
-
-<meta name="keywords" content="Futbol Live, canlı maç, Süper Lig canlı skor, futbol skorları, maç sonuçları, futbol haberleri">
-
-<meta name="author" content="Futbol Live">
-
-<meta name="robots" content="index, follow">
-
-
-<!-- PWA Hazırlık -->
+<meta name="description" content="Futbol Live canlı maç skorları, Süper Lig ve futbol haberleri.">
 
 <meta name="theme-color" content="#111111">
 
 <meta name="mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-
-<!-- Google ve sosyal medya görünümü -->
-
-<meta property="og:title" content="Futbol Live - Canlı Maç Skorları">
-
-<meta property="og:description" content="Süper Lig canlı maçları, skorlar ve futbol haberleri.">
-
-<meta property="og:type" content="website">
-
-
-<!-- Sekme logosu -->
-
-<link rel="icon" type="image/png" href="logo.png">
-
+<link rel="icon" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 
+<!-- Uygulama dosyası -->
+<link rel="manifest" href="manifest.json">
 
 <link rel="stylesheet" href="style.css">
 
@@ -49,6 +26,16 @@
 
 
 <body>
+
+
+<div id="splash">
+
+<img src="logo.png">
+
+<h1>Futbol Live</h1>
+
+</div>
+
 
 
 <header>
@@ -82,25 +69,21 @@
 
 <h2>🔴 Canlı Maçlar</h2>
 
+
 <button id="bildirimAc">
-
 🔔 Bildirimleri Aç
-
 </button>
 
 
 <div id="liveMatches">
 
 <div class="match">
-
 <span>Canlı maçlar yükleniyor...</span>
-
 </div>
 
 </div>
 
 </div>
-
 
 
 
@@ -112,30 +95,21 @@
 <table>
 
 <thead>
-
 <tr>
-
 <th>#</th>
-
 <th>Takım</th>
-
 <th>P</th>
-
 </tr>
-
 </thead>
 
 
 <tbody id="puan">
 
 <tr>
-
 <td colspan="3">Yükleniyor...</td>
-
 </tr>
 
 </tbody>
-
 
 </table>
 
@@ -143,24 +117,18 @@
 
 
 
-
 <div class="card">
 
 <h2>📰 Son Haberler</h2>
 
-
 <div class="news">
-
-Futbol haberleri ve güncel gelişmeler yakında burada gösterilecek.
+Futbol haberleri ve güncel gelişmeler yakında burada.
+</div>
 
 </div>
 
 
 </div>
-
-
-</div>
-
 
 
 
@@ -175,6 +143,37 @@ Futbol Live © 2026
 <script src="script.js"></script>
 
 
-</body>
+<script>
 
+setTimeout(()=>{
+
+document.getElementById("splash").style.display="none";
+
+},2000);
+
+
+
+document.getElementById("bildirimAc").onclick=function(){
+
+Notification.requestPermission().then(izin=>{
+
+if(izin==="granted"){
+
+new Notification("Futbol Live",{
+
+body:"Bildirimler açıldı ⚽"
+
+});
+
+}
+
+});
+
+};
+
+
+</script>
+
+
+</body>
 </html>
