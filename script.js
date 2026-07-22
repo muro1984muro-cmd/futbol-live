@@ -1,5 +1,6 @@
 const WORKER_URL = "https://futbol-live-api.muro-1984-muro.workers.dev";
 
+
 async function canliMaclar() {
   try {
     const res = await fetch(
@@ -17,6 +18,7 @@ async function canliMaclar() {
     }
 
     data.response.forEach(mac => {
+
       alan.innerHTML += `
       <div class="match">
         <span>${mac.teams.home.name}</span>
@@ -24,6 +26,7 @@ async function canliMaclar() {
         <span>${mac.teams.away.name}</span>
         <span class="live">${mac.fixture.status.elapsed}'</span>
       </div>`;
+
     });
 
   } catch (err) {
@@ -31,21 +34,29 @@ async function canliMaclar() {
   }
 }
 
+
 canliMaclar();
+
+
 // 🔔 Bildirim sistemi
 
-const bildirimButon = document.getElementById("bildirimAc");
+window.addEventListener("load", () => {
 
-if (bildirimButon) {
+  const bildirimButon = document.getElementById("bildirimAc");
 
-  bildirimButon.addEventListener("click", async () => {
+  if (!bildirimButon) return;
+
+
+  bildirimButon.onclick = async () => {
 
     if (!("Notification" in window)) {
       alert("Tarayıcın bildirimleri desteklemiyor.");
       return;
     }
 
+
     const izin = await Notification.requestPermission();
+
 
     if (izin === "granted") {
 
@@ -53,8 +64,12 @@ if (bildirimButon) {
         body: "Bildirimler açıldı! Canlı maç gelişmelerini takip edeceksin."
       });
 
+    } else {
+
+      alert("Bildirim izni verilmedi.");
+
     }
 
-  });
+  };
 
-}
+});
