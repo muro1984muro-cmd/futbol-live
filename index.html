@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futbol Live</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#111;
+color:white;
+}
+
+header{
+background:#19b34c;
+padding:18px;
+font-size:28px;
+font-weight:bold;
+text-align:center;
+}
+
+nav{
+display:flex;
+justify-content:space-around;
+background:#1b1b1b;
+padding:15px;
+position:sticky;
+top:0;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+width:95%;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1d1d1d;
+padding:15px;
+border-radius:12px;
+margin-bottom:18px;
+}
+
+.card h2{
+margin-bottom:15px;
+color:#19b34c;
+}
+
+.match{
+display:flex;
+justify-content:space-between;
+padding:12px;
+border-bottom:1px solid #333;
+}
+
+.live{
+background:red;
+padding:4px 8px;
+border-radius:8px;
+font-size:12px;
+}
+
+.news{
+padding:12px;
+border-bottom:1px solid #333;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #333;
+}
+
+th{
+background:#19b34c;
+}
+
+footer{
+text-align:center;
+padding:25px;
+color:#888;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+⚽ Futbol Live
+</header>
+
+<nav>
+<a href="#">Canlı</a>
+<a href="#">Fikstür</a>
+<a href="#">Puan</a>
+<a href="#">Haber</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+<h2>🔴 Canlı Maçlar</h2>
+
+<div class="match">
+<span>Fenerbahçe</span>
+<strong>2 - 1</strong>
+<span>Beşiktaş</span>
+<span class="live">67'</span>
+</div>
+
+<div class="match">
+<span>Galatasaray</span>
+<strong>1 - 0</strong>
+<span>Trabzonspor</span>
+<span class="live">45'</span>
+</div>
+
+</div>
+
+<div class="card">
+<h2>🏆 Süper Lig</h2>
+
+<table>
+
+<tr>
+<th>#</th>
+<th>Takım</th>
+<th>P</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Fenerbahçe</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Galatasaray</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Beşiktaş</td>
+<td>9</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>📰 Son Haberler</h2>
+
+<div class="news">
+Fenerbahçe yeni transferini açıkladı.
+</div>
+
+<div class="news">
+Derbi haftasında heyecan dorukta.
+</div>
+
+<div class="news">
+Süper Lig'de haftanın programı açıklandı.
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+Futbol Live © 2026
+
+</footer>
+
+</body>
+</html>
