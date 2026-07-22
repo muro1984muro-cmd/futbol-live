@@ -32,3 +32,29 @@ async function canliMaclar() {
 }
 
 canliMaclar();
+// 🔔 Bildirim sistemi
+
+const bildirimButon = document.getElementById("bildirimAc");
+
+if (bildirimButon) {
+
+  bildirimButon.addEventListener("click", async () => {
+
+    if (!("Notification" in window)) {
+      alert("Tarayıcın bildirimleri desteklemiyor.");
+      return;
+    }
+
+    const izin = await Notification.requestPermission();
+
+    if (izin === "granted") {
+
+      new Notification("⚽ Futbol Live", {
+        body: "Bildirimler açıldı! Canlı maç gelişmelerini takip edeceksin."
+      });
+
+    }
+
+  });
+
+}
