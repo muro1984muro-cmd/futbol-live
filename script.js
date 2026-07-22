@@ -1,4 +1,4 @@
-const API_KEY = e639d1554da4579b85e63e33c3db94f1
+const API_KEY = "e639d1554da4579b85e63e33c3db94f1";
 
 const headers = {
   "x-apisports-key": API_KEY
