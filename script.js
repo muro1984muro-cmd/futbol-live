@@ -172,3 +172,11 @@ canliMaclar();
 // Her 30 saniyede kontrol
 
 setInterval(canliMaclar,30000);
+setTimeout(function(){
+
+bildirimGonder(
+"⚽ Test Bildirimi",
+"Futbol Live bildirim sistemi çalışıyor!"
+);
+
+},5000);
