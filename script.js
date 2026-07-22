@@ -94,7 +94,8 @@ function bildirimGonder(baslik, mesaj){
   if(Notification.permission === "granted"){
 
     new Notification(baslik,{
-      body: mesaj
+      body: mesaj,
+      icon: "logo.png"
     });
 
   }
@@ -140,12 +141,31 @@ bildirimGonder(
 }
 
 
+// 🚀 Uygulama açılış bildirimi
+
+if(Notification.permission === "granted"){
+
+setTimeout(()=>{
+
+bildirimGonder(
+"⚽ Futbol Live",
+"Futbol Live yeni uygulaması açıldı! Canlı maçları takip edebilirsiniz."
+);
+
+},3000);
+
+}
+
+
 });
 
 
 
-// Her 30 saniyede kontrol et
+// İlk kontrol
 
 canliMaclar();
+
+
+// Her 30 saniyede kontrol
 
 setInterval(canliMaclar,30000);
