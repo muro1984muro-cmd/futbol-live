@@ -31,4 +31,4 @@ async function canliMaclar() {
   }
 }
 
-canliMaclar();
+canliMaclar();"https://v3.football.api-sports.io/fixtures?live=all"
