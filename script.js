@@ -3,7 +3,7 @@ const WORKER_URL = "https://futbol-live-api.muro-1984-muro.workers.dev";
 async function canliMaclar() {
   try {
     const res = await fetch(
-      `${WORKER_URL}?endpoint=fixtures?live=all`
+      `${WORKER_URL}?endpoint=fixtures?live=all&league=203`
     );
 
     const data = await res.json();
@@ -31,4 +31,4 @@ async function canliMaclar() {
   }
 }
 
-canliMaclar();"https://v3.football.api-sports.io/fixtures?live=all"
+canliMaclar();
