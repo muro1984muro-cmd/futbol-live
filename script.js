@@ -32,14 +32,13 @@ async function canliMaclar() {
 
     data.response.forEach(mac => {
 
-
       const id = mac.fixture.id;
 
       const skor =
       `${mac.goals.home}-${mac.goals.away}`;
 
 
-      // 🥅 Gol kontrolü
+      // 🥅 Gol bildirimi
 
       if (eskiSkorlar[id] && eskiSkorlar[id] !== skor) {
 
@@ -52,7 +51,6 @@ async function canliMaclar() {
 
 
       eskiSkorlar[id] = skor;
-
 
 
       alan.innerHTML += `
@@ -95,7 +93,7 @@ function bildirimGonder(baslik, mesaj){
 
     new Notification(baslik,{
       body: mesaj,
-      icon: "logo.png"
+      icon:"logo.png"
     });
 
   }
@@ -104,13 +102,13 @@ function bildirimGonder(baslik, mesaj){
 
 
 
-// 🔔 Bildirim açma
+
+// 🔔 Bildirim sistemi
 
 window.addEventListener("load",()=>{
 
 
-const buton =
-document.getElementById("bildirimAc");
+const buton = document.getElementById("bildirimAc");
 
 
 if(buton){
@@ -119,11 +117,10 @@ if(buton){
 buton.onclick = async()=>{
 
 
-const izin =
-await Notification.requestPermission();
+const izin = await Notification.requestPermission();
 
 
-if(izin==="granted"){
+if(izin === "granted"){
 
 
 bildirimGonder(
@@ -141,18 +138,23 @@ bildirimGonder(
 }
 
 
+
 // 🚀 Uygulama açılış bildirimi
 
 if(Notification.permission === "granted"){
 
+
 setTimeout(()=>{
+
 
 bildirimGonder(
 "⚽ Futbol Live",
-"Futbol Live yeni uygulaması açıldı! Canlı maçları takip edebilirsiniz."
+"Futbol Live yeni uygulaması açıldı! Hoş geldiniz."
 );
 
+
 },3000);
+
 
 }
 
@@ -161,7 +163,8 @@ bildirimGonder(
 
 
 
-// İlk kontrol
+
+// İlk açılış
 
 canliMaclar();
 
