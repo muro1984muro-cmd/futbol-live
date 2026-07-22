@@ -1,4 +1,4 @@
-const API_KEY = "BURAYA_API_FOOTBALL_KEYİNİ_YAZ";
+const API_KEY = "e639d1554da4579b85e63e33c3db94f1";
 
 export default {
   async fetch(request) {
