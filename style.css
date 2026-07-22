@@ -91,4 +91,9 @@ footer{
     text-align:center;
     padding:20px;
     color:#888;
+}.logo {
+  width: 45px;
+  height: 45px;
+  vertical-align: middle;
+  margin-right: 10px;
 }
