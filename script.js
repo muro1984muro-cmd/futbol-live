@@ -10,12 +10,18 @@ async function canliMaclar() {
   try {
 
     const res = await fetch(
-      `${WORKER_URL}?endpoint=fixtures&live=all&league=203`
+      `${WORKER_URL}?endpoint=fixtures&live=all`
     );
+
 
     const data = await res.json();
 
+
     const alan = document.getElementById("liveMatches");
+
+
+    if(!alan) return;
+
 
     alan.innerHTML = "";
 
@@ -30,42 +36,70 @@ async function canliMaclar() {
     }
 
 
+
     data.response.forEach(mac => {
+
 
       const id = mac.fixture.id;
 
+
       const skor =
-      `${mac.goals.home}-${mac.goals.away}`;
+      `${mac.goals.home ?? 0}-${mac.goals.away ?? 0}`;
 
 
-      // 🥅 Gol bildirimi
+
+      // 🥅 Gol kontrolü
 
       if (eskiSkorlar[id] && eskiSkorlar[id] !== skor) {
 
+
         bildirimGonder(
-          "🥅 Gol!",
+
+          "🥅 Gol oldu!",
+
           `${mac.teams.home.name} ${skor} ${mac.teams.away.name}`
+
         );
+
 
       }
 
 
+
       eskiSkorlar[id] = skor;
+
+
+
+      const dakika =
+      mac.fixture.status.elapsed 
+      ? mac.fixture.status.elapsed + "'"
+      : "Başlamadı";
+
+
 
 
       alan.innerHTML += `
 
       <div class="match">
 
-      <span>${mac.teams.home.name}</span>
-
-      <strong>${skor}</strong>
-
-      <span>${mac.teams.away.name}</span>
 
       <span class="live">
-      ${mac.fixture.status.elapsed}'
+      🔴 CANLI ${dakika}
       </span>
+
+
+      <h3>
+      ${mac.teams.home.name}
+      🆚
+      ${mac.teams.away.name}
+      </h3>
+
+
+      <p>
+      ⚽ Skor:
+      <strong>${skor}</strong>
+      </p>
+
 
       </div>
 
@@ -75,13 +109,21 @@ async function canliMaclar() {
     });
 
 
-  } catch(err){
 
-    console.error(err);
+  } catch(err) {
+
+
+    console.error(
+      "Canlı maç hatası:",
+      err
+    );
+
 
   }
 
+
 }
+
 
 
 
@@ -90,16 +132,26 @@ async function canliMaclar() {
 
 function bildirimGonder(baslik, mesaj){
 
+
   if(Notification.permission === "granted"){
 
+
     new Notification(baslik,{
+
       body: mesaj,
+
       icon:"logo.png"
+
     });
+
 
   }
 
+
 }
+
+
+
 
 
 
@@ -109,7 +161,9 @@ function bildirimGonder(baslik, mesaj){
 window.addEventListener("load",()=>{
 
 
-const buton = document.getElementById("bildirimAc");
+const buton =
+document.getElementById("bildirimAc");
+
 
 
 if(buton){
@@ -118,25 +172,34 @@ if(buton){
 buton.onclick = async()=>{
 
 
-const izin = await Notification.requestPermission();
+const izin =
+await Notification.requestPermission();
+
 
 
 if(izin === "granted"){
 
 
 bildirimGonder(
+
 "⚽ Futbol Live",
+
 "Bildirimler aktif edildi!"
+
 );
 
 
 }
 
 
+
 };
 
 
+
 }
+
+
 
 
 
@@ -144,16 +207,25 @@ bildirimGonder(
 
 if(Notification.permission === "granted"){
 
+
 setTimeout(()=>{
 
+
 bildirimGonder(
+
 "⚽ Futbol Live yayında!",
-"Yeni maçları ve futbol haberlerini takip et."
+
+"Canlı maçları takip etmeye başla."
+
 );
+
 
 },3000);
 
+
+
 }
+
 
 
 });
@@ -161,11 +233,21 @@ bildirimGonder(
 
 
 
-// İlk açılış
+
+
+
+// İlk çalıştır
 
 canliMaclar();
 
 
-// Her 30 saniyede kontrol
 
-setInterval(canliMaclar,30000);
+// Her 30 saniyede yenile
+
+setInterval(
+
+canliMaclar,
+
+30000
+
+);
