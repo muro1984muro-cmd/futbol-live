@@ -85,6 +85,7 @@ async function canliMaclar() {
 
 
 
+
 // 🔔 Bildirim gönder
 
 function bildirimGonder(baslik, mesaj){
@@ -143,18 +144,14 @@ bildirimGonder(
 
 if(Notification.permission === "granted"){
 
-
 setTimeout(()=>{
 
-
 bildirimGonder(
-"⚽ Futbol Live",
-"Futbol Live yeni uygulaması açıldı! Hoş geldiniz."
+"⚽ Futbol Live yayında!",
+"Yeni maçları ve futbol haberlerini takip et."
 );
 
-
 },3000);
-
 
 }
 
@@ -172,26 +169,3 @@ canliMaclar();
 // Her 30 saniyede kontrol
 
 setInterval(canliMaclar,30000);
-setTimeout(function(){
-
-bildirimGonder(
-"⚽ Test Bildirimi",
-"Futbol Live bildirim sistemi çalışıyor!"
-);
-
-},5000);
-navigator.serviceWorker.ready.then(function(registration){
-
-setTimeout(function(){
-
-registration.showNotification(
-"⚽ Futbol Live",
-{
-body:"Test bildirimi çalışıyor!",
-icon:"logo.png"
-}
-);
-
-},5000);
-
-});
