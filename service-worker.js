@@ -2,13 +2,17 @@ const API_KEY = "e639d1554da4579b85e63e33c3db94f1";
 
 export default {
   async fetch(request) {
+
     const url = new URL(request.url);
 
     const endpoint = url.searchParams.get("endpoint");
+    const live = url.searchParams.get("live");
+    const league = url.searchParams.get("league");
 
-    if (endpoint && endpoint.startsWith("fixtures")) {
+    if (endpoint === "fixtures") {
 
-      const apiUrl = "https://v3.football.api-sports.io/fixtures?live=all&league=203";
+      const apiUrl =
+        `https://v3.football.api-sports.io/fixtures?live=${live}&league=${league}`;
 
       const response = await fetch(apiUrl, {
         headers: {
