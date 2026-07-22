@@ -1,3 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Futbol Live - Canlı Maç Skorları</title>
+
+<meta name="description" content="Futbol Live canlı maç skorları ve futbol haberleri.">
+
+<meta name="theme-color" content="#111111">
+
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div id="splash">
+
+<img src="logo.png">
+
+<h1>Futbol Live</h1>
+
+</div>
+
+
+
+<header>
+
+<img src="logo.png" class="logo">
+
+<span>Futbol Live</span>
+
+</header>
+
+
+
+
+<nav>
+
+<a href="#">🔴 Canlı</a>
+
+<a href="#">📅 Fikstür</a>
+
+<a href="#">🏆 Puan</a>
+
+<a href="#">📰 Haber</a>
+
+</nav>
+
+
+
+
+<div class="container">
+
+
+
+<div class="card">
+
+<h2>🔴 Canlı Maçlar</h2>
+
+
+<button id="bildirimAc">
+
+🔔 Bildirimleri Aç
+
+</button>
+
+
+<div id="liveMatches">
+
+<div class="match">
+
+<span>Canlı maçlar yükleniyor...</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
 <div class="card">
 
 <h2>🏆 Süper Lig Puan Durumu</h2>
@@ -43,6 +140,8 @@ Yükleniyor...
 
 
 
+
+
 <div class="card">
 
 <h2>📰 Son Haberler</h2>
@@ -58,7 +157,9 @@ Futbol haberleri ve güncel gelişmeler yakında burada.
 </div>
 
 
+
 </div>
+
 
 
 
@@ -83,7 +184,7 @@ Futbol Live © 2026
 
 setTimeout(()=>{
 
-let splash = document.getElementById("splash");
+let splash=document.getElementById("splash");
 
 if(splash){
 
@@ -96,39 +197,9 @@ splash.style.display="none";
 
 
 
-// Bildirim butonu
-
-document.getElementById("bildirimAc").onclick=function(){
-
-
-Notification.requestPermission().then(izin=>{
-
-
-if(izin==="granted"){
-
-
-new Notification("⚽ Futbol Live",{
-
-body:"Bildirimler açıldı!"
-
-});
-
-
-}
-
-
-});
-
-
-};
-
-
-
-
-// Service Worker kayıt
+// Service Worker
 
 if("serviceWorker" in navigator){
-
 
 navigator.serviceWorker.register("service-worker.js")
 
@@ -138,15 +209,13 @@ console.log("Service Worker çalışıyor");
 
 })
 
-.catch(error=>{
+.catch(err=>{
 
-console.log("Service Worker hata:",error);
+console.log(err);
 
 });
 
-
 }
-
 
 
 </script>
