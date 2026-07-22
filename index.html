@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 
 <meta charset="UTF-8">
@@ -17,7 +18,6 @@
 <link rel="icon" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 
-<!-- Uygulama dosyası -->
 <link rel="manifest" href="manifest.json">
 
 <link rel="stylesheet" href="style.css">
@@ -71,19 +71,25 @@
 
 
 <button id="bildirimAc">
+
 🔔 Bildirimleri Aç
+
 </button>
 
 
 <div id="liveMatches">
 
 <div class="match">
+
 <span>Canlı maçlar yükleniyor...</span>
-</div>
 
 </div>
 
 </div>
+
+
+</div>
+
 
 
 
@@ -95,25 +101,40 @@
 <table>
 
 <thead>
+
 <tr>
+
 <th>#</th>
+
 <th>Takım</th>
+
 <th>P</th>
+
 </tr>
+
 </thead>
 
 
 <tbody id="puan">
 
 <tr>
-<td colspan="3">Yükleniyor...</td>
+
+<td colspan="3">
+
+Yükleniyor...
+
+</td>
+
 </tr>
 
 </tbody>
 
+
 </table>
 
+
 </div>
+
 
 
 
@@ -121,14 +142,19 @@
 
 <h2>📰 Son Haberler</h2>
 
+
 <div class="news">
+
 Futbol haberleri ve güncel gelişmeler yakında burada.
-</div>
 
 </div>
 
 
 </div>
+
+
+</div>
+
 
 
 
@@ -140,62 +166,88 @@ Futbol Live © 2026
 
 
 
+
 <script src="script.js"></script>
+
 
 
 <script>
 
+
+// Açılış animasyonu
+
 setTimeout(()=>{
 
-document.getElementById("splash").style.display="none";
+let splash = document.getElementById("splash");
+
+if(splash){
+
+splash.style.display="none";
+
+}
 
 },2000);
 
 
 
+
+// Bildirim butonu
+
 document.getElementById("bildirimAc").onclick=function(){
+
 
 Notification.requestPermission().then(izin=>{
 
+
 if(izin==="granted"){
 
-new Notification("Futbol Live",{
 
-body:"Bildirimler açıldı ⚽"
+new Notification("⚽ Futbol Live",{
+
+body:"Bildirimler açıldı!"
 
 });
+
 
 }
 
+
 });
+
 
 };
 
 
-</script>src="script.js"></script>
 
-<script src="script.js"></script>
 
-<script>
+// Service Worker kayıt
 
-if ("serviceWorker" in navigator) {
+if("serviceWorker" in navigator){
+
 
 navigator.serviceWorker.register("service-worker.js")
-.then(function(){
+
+.then(()=>{
 
 console.log("Service Worker çalışıyor");
 
 })
-.catch(function(error){
 
-console.log("Service Worker hata:", error);
+.catch(error=>{
+
+console.log("Service Worker hata:",error);
 
 });
 
+
 }
+
+
 
 </script>
 
 
+
 </body>
+
 </html>
