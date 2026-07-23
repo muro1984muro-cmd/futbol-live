@@ -61,5 +61,5 @@ async function canliMaclar() {
 window.onload = () => {
   canliMaclar();
 
-  setInterval(canliMaclar,60000);
+  setInterval(canliMaclar,300000);
 };
